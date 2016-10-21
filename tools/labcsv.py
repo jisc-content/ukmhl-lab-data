@@ -3,11 +3,16 @@ def join_field_list(fields):
 	return str.join("|",fields)
 
 def split_field_list(field):
-	return field.split("|")
+	fields = field.rstrip(" ").rstrip("|").split("|")
+	cleansed_fields = []
+	for field in fields:
+		if field != "" and field != " ":
+			cleansed_fields.append(field)
+	return cleansed_fields 
 
 def split_typed_field_list(field):
 	typed_fields = []
-	fields = field.split("|")
+	fields =  split_field_list(field)
 	for field in fields:
 		typed_fields.append(to_typed_field(field))
 	return typed_fields

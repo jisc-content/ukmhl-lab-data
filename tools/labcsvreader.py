@@ -12,7 +12,7 @@ class LabCSVReader(object):
 			self.csv_file = open(csv_filename,"rb")
 			self.csv_reader = csv.DictReader(self.csv_file,fieldnames=fieldnames, delimiter=',', quotechar='"')
 			self.csv_reader.next() #skip header
-			
+
 	def next(self):
 		try: 
 			return self.get_row(self.csv_reader.next())
@@ -29,7 +29,7 @@ class LabCSVReader(object):
 
 	def close(self):
 		self.csv_file.close()
-
+'''
 lab_csv_reader = LabCSVReader("/Users/danielneedham/projects/ukmhl/ukmhl-lab-data-compressed/tools/input.txt")
 while(True):
 	row = lab_csv_reader.next()
@@ -37,3 +37,4 @@ while(True):
 		break
 	print row
 lab_csv_reader.close()
+'''
