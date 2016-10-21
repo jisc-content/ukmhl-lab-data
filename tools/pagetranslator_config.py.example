@@ -1,0 +1,8 @@
+translator_api = dict(
+    key = 'your key',
+)
+paths  = dict(
+	input_file = 'path to input csv',
+    working_directory = 'path to publication page text files',
+    translation_directory = 'path to put translated files',
+)
