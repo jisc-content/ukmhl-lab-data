@@ -1,6 +1,6 @@
 import csv
 
-class LabCSVIterator(object):
+class LabCSVHandler(object):
 	"""
 		Simple wrapper class around csv, that sets up a CSV reader for the 
 		lab day CSV files.
@@ -8,9 +8,9 @@ class LabCSVIterator(object):
 	csv_file = None
 	csv_reader = None
 	
-	def __init__(self, csv_filename):
+	def __init__(self, csv_filename,fieldnames = None):
 			self.csv_file = open(csv_filename,"rb")
-			self.csv_reader = csv.DictReader(self.csv_file, delimiter=',', quotechar='"')
+			self.csv_reader = csv.DictReader(self.csv_file,fieldnames=fieldnames, delimiter=',', quotechar='"')
 
 	def next(self):
 		return self.csv_reader.next()
@@ -20,3 +20,6 @@ class LabCSVIterator(object):
 
 	def close(self):
 		self.csv_file.close()
+
+	def split_field_list(self, field):
+		return field.split("|")
