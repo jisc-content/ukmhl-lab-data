@@ -7,7 +7,7 @@ class PublicationCSVReader(LabCSVReader):
     def get_row(self,row):
 		publication_row = PublicationRow(row)
 		return publication_row
-
+'''
 publication_csv_reader = PublicationCSVReader("/Users/danielneedham/tmp/sample/anatomy/publications.csv")
 while(True):
 	row = publication_csv_reader.next()
@@ -15,3 +15,4 @@ while(True):
 		break
 	print row.entries["identifiers"]
 publication_csv_reader.close()
+'''

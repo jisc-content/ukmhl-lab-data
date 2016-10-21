@@ -11,7 +11,8 @@ class LabCSVReader(object):
 	def __init__(self, csv_filename,fieldnames = None):
 			self.csv_file = open(csv_filename,"rb")
 			self.csv_reader = csv.DictReader(self.csv_file,fieldnames=fieldnames, delimiter=',', quotechar='"')
-
+			self.csv_reader.next() #skip header
+			
 	def next(self):
 		try: 
 			return self.get_row(self.csv_reader.next())
