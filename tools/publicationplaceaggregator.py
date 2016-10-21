@@ -5,7 +5,7 @@ import plotly.graph_objs as go
 class PublicationPlaceAggregator(FieldAggregator):
 
 	def normalise_value(self, value):
-		return value.replace(" ","")
+		return value.lstrip().rstrip()
 
 publication_place_aggregator = PublicationPlaceAggregator()
 aggregated_fields = publication_place_aggregator.aggregate_field("/Users/danielneedham/tmp/sample/anatomy/publications.csv","publication places")
