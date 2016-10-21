@@ -14,15 +14,14 @@ class LabCSVReader(object):
 
 	def next(self):
 		try: 
-        	return self.get_row(reader.next())
-    	except csv.Error:
-        	return None
-    	except StopIteration:
-        	return None
-        	
+			return self.get_row(self.csv_reader.next())
+		except csv.Error:
+			return None
+		except StopIteration:
+			return None
+
 	def get_row(self,row):
 		return row
-
 
 	def reader(self):
 		return self.csv_reader
@@ -30,6 +29,10 @@ class LabCSVReader(object):
 	def close(self):
 		self.csv_file.close()
 
-	def split_field_list(self, field):
-		return field.split("|")
-
+lab_csv_reader = LabCSVReader("/Users/danielneedham/projects/ukmhl/ukmhl-lab-data-compressed/tools/input.txt")
+while(True):
+	row = lab_csv_reader.next()
+	if row == None:
+		break
+	print row
+lab_csv_reader.close()

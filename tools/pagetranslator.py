@@ -1,7 +1,7 @@
 import os
 import os.path
 import pagetranslator_config
-from labcsvhandler import LabCSVHandler
+from labcsvreader import LabCSVReader
 from translator import Translator
 
 class PageTranslator(object):
@@ -47,13 +47,13 @@ class PageTranslator(object):
 			Args:
         	input_file (str): The input csv file containing a list of ukmhl identifiers to process
 		"""
-		lab_csv_handler = LabCSVHandler(input_file)
-		for row in lab_csv_handler.reader():
+		lab_csv_reader = LabCSVReader(input_file)
+		for row in lab_csv_reader.reader():
 			publication_directory = working_directory + row['id'] + "/pages/"
 			for page_file in os.listdir(publication_directory ):
 				translation_path = translation_directory + row['id'] + "/translations/"
 				self.translate_page(publication_directory + page_file, translation_path, page_file)
-		lab_csv_handler.close()
+		lab_csv_reader.close()
 
 page_translator = PageTranslator(pagetranslator_config.translator_api['key'])
 page_translator.translate_publications(pagetranslator_config.paths['working_directory'],
